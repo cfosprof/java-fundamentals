@@ -6,7 +6,7 @@ This is a collection of labs and exercises for the Code Fellows Java 401 course.
 
 1. [Java Primitives and Control Flow](basics/README.md)
 2. [Arrays, Loops, Imports, ArrayLists](javalibrary/README.md)
-3. [Lab 3](/)
+3. [linter](linter/README.md)
 4. [Lab 4](/)
 5. [Lab 5](/)
 6. [Lab 6](/)
