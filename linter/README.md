@@ -1,4 +1,4 @@
-Program: JavaScript Linter
+# Program: JavaScript Linter
 
 Description: This program reads a JavaScript file and generates an error message whenever it finds a line that doesn't end in a semi-colon. The other one does the data stuff.
 
