@@ -5,6 +5,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class App {
     public String getGreeting() {
@@ -12,7 +16,7 @@ public class App {
     }
 
     public static void main(String[] args) throws IOException {
-        Path gatesJsPath = Paths.get("/Users/chrisfoster/java-fundamentals/linter/app/src/main/resources/gates.js");
+        Path gatesJsPath = Paths.get("src/main/resources/gates.js");
         String errors = lintJavaScriptFile(gatesJsPath);
         System.out.println(errors);
     }
@@ -35,6 +39,7 @@ public class App {
         return errors.toString();
     }
 
+
     public static boolean isLineMissingSemicolon(String line) {
         line = line.trim();
 
@@ -46,7 +51,8 @@ public class App {
             return false;
         }
 
-        if (line.contains("if") || line.contains("else")) {
+        Pattern keywordPattern = Pattern.compile("\\b(if|else)\\b");
+        if (keywordPattern.matcher(line).find()) {
             return false;
         }
 
