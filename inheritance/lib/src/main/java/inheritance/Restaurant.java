@@ -3,25 +3,27 @@ package inheritance;
 import java.util.ArrayList;
 
 public class Restaurant {
-    private String name; // Instance variable to store the restaurant's name
-    private double stars; // Double for 4.9
-    private String priceCategory; // $$
-    private ArrayList<Review> reviews; // List of review objects per store
+    // Instance variables
+    private String name;
+    private double stars;
+    private String priceCategory; // Price category (e.g., "$$")
+    private ArrayList<Review> reviews; // List of review objects for the restaurant
 
-    //instantiate a new restaurant
+    // Constructor for the Restaurant class
     public Restaurant(String name, double stars, String priceCategory) {
         this.name = name;
         this.stars = stars;
         this.priceCategory = priceCategory;
-        this.reviews = new ArrayList<>(); // Init list
-    }
-    //review list getter
-    public void addReview(Review review) {
-        reviews.add(review);
-        updateStars();//deposit you stars.
+        this.reviews = new ArrayList<>(); // Initializes the list of reviews
     }
 
-    //update stars based on current reviews
+    // Adds a review to the restaurant's review list
+    public void addReview(Review review) {
+        reviews.add(review);
+        updateStars(); // Updates the restaurant's star rating based on the new review
+    }
+
+    // Updates the restaurant's star rating based on the current reviews
     private void updateStars() {
         int totalStars = 0;
         for (Review review : reviews) {
@@ -30,7 +32,7 @@ public class Restaurant {
         this.stars = totalStars / reviews.size();
     }
 
-    // Getter method for name
+    // toString method to return a string representation of the restaurant object
     @Override
     public String toString() {
         return "Restaurant{" +
@@ -40,7 +42,7 @@ public class Restaurant {
                 '}';
     }
 
-    // Getter method for star rating update
+    // Getter method for the restaurant's star rating
     public double getStars() {
         return stars;
     }
