@@ -2,6 +2,7 @@ package quotes;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import java.util.ArrayList;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -58,20 +59,23 @@ public class App {
 
         public QuoteService() {
             try {
-                Gson gson = new Gson();
-                InputStream inputStream = new FileInputStream("app/src/main/java/resources/recentquotes.json");
-                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-                quotes = gson.fromJson(reader, new TypeToken<List<Quote>>() {}.getType());
-                reader.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+                InputStream is = new FileInputStream("src/main/resources/recentquotes.json");
+                Reader reader = new InputStreamReader(is);
+                this.quotes = new Gson().fromJson(reader, new TypeToken<List<Quote>>(){}.getType());
+            } catch (FileNotFoundException e) {
+                System.err.println("File not found: " + e.getMessage());
+                this.quotes = new ArrayList<>(); // Initialize quotes as an empty list
             }
         }
+
 
         public Quote getRandomQuote() {
             Random random = new Random();
             int index = random.nextInt(quotes.size());
             return quotes.get(index);
+        }
+        public List<Quote> getQuotes() {
+            return quotes;
         }
     }
 }
