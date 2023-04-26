@@ -1,26 +1,41 @@
 package inheritance;
-//review text, author, and number of stars.
+
 public class Review {
     private String body;
     private String author;
     private double stars;
-    //constructor to instantiate review object
+    private String movie;
+
     public Review(String body, String author, double stars) {
         this.body = body;
         this.author = author;
         this.stars = stars;
+        this.movie = null;
     }
-    //getting stars
+
+    public Review(String body, String author, double stars, String movie) {
+        this.body = body;
+        this.author = author;
+        this.stars = stars;
+        this.movie = movie;
+    }
+
     public double getStars() {
         return stars;
     }
-    //to string method
+
+    public String getMovie() {
+        return movie;
+    }
+
     @Override
     public String toString() {
+        String movieStr = movie != null ? ", movie='" + movie + '\'' : "";
         return "Review{" +
                 "body='" + body + '\'' +
                 ", author='" + author + '\'' +
                 ", stars=" + stars +
+                movieStr +
                 '}';
     }
 }
